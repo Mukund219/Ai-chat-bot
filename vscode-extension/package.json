@@ -1,0 +1,119 @@
+{
+  "name": "developer-assistant",
+  "displayName": "Developer Assistant",
+  "description": "AI-powered coding assistant for VS Code",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:developerAssistant.openChat",
+    "onCommand:developerAssistant.askQuestion",
+    "onCommand:developerAssistant.debugCode",
+    "onCommand:developerAssistant.explainCode",
+    "onCommand:developerAssistant.optimizeCode"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "developerAssistant.openChat",
+        "title": "Developer Assistant: Open Chat",
+        "icon": "$(comment-discussion)"
+      },
+      {
+        "command": "developerAssistant.askQuestion",
+        "title": "Developer Assistant: Ask Question"
+      },
+      {
+        "command": "developerAssistant.debugCode",
+        "title": "Developer Assistant: Debug Selected Code"
+      },
+      {
+        "command": "developerAssistant.explainCode",
+        "title": "Developer Assistant: Explain Selected Code"
+      },
+      {
+        "command": "developerAssistant.optimizeCode",
+        "title": "Developer Assistant: Optimize Selected Code"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "developerAssistant.debugCode",
+          "group": "developerAssistant@1",
+          "when": "editorHasSelection"
+        },
+        {
+          "command": "developerAssistant.explainCode",
+          "group": "developerAssistant@2",
+          "when": "editorHasSelection"
+        },
+        {
+          "command": "developerAssistant.optimizeCode",
+          "group": "developerAssistant@3",
+          "when": "editorHasSelection"
+        }
+      ],
+      "view/title": [
+        {
+          "command": "developerAssistant.openChat",
+          "group": "navigation"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "developerAssistant.openChat",
+        "key": "ctrl+shift+a",
+        "mac": "cmd+shift+a"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "developer-assistant",
+          "title": "Developer Assistant",
+          "icon": "$(hubot)"
+        }
+      ]
+    },
+    "views": {
+      "developer-assistant": [
+        {
+          "id": "developerAssistant.chatView",
+          "name": "Chat",
+          "type": "webview"
+        }
+      ]
+    }
+  },
+  "publisher": "your-publisher-name",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your/repo"
+  },
+  "bugs": {
+    "url": "https://github.com/your/repo/issues"
+  },
+  "homepage": "https://github.com/your/repo",
+  "license": "MIT",
+  "author": {
+    "name": "Your Name"
+  },
+  "icon": "media/icon.png",
+  "scripts": {
+    "test": "node ./test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.74.0",
+    "@types/node": "16.x"
+  },
+  "dependencies": {
+    "axios": "^1.5.0"
+  }
+}
